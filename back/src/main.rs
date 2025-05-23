@@ -9,6 +9,7 @@ fn setup_loggers() {
 
     const DEP_FILTERS: &[(&str, LevelFilter)] = &[
         ("rocket", LevelFilter::Warn),
+        ("tungstenite", LevelFilter::Warn),
         ("rocket::server.rs", LevelFilter::Off), // on 0.5.1, it only has infos about querying a 404 and catcher panicking
     ];
 
@@ -29,7 +30,10 @@ fn setup_loggers() {
 
 // Needed for tests
 pub async fn build_rocket() -> rocket::Rocket<rocket::Ignite> {
+    let user_map = routes::UserMap::default();
+
     rocket::build()
+        .manage(user_map)
         .register("/", rocket::catchers![catchers::root_404])
         .mount(
             "/",
@@ -45,7 +49,8 @@ pub async fn build_rocket() -> rocket::Rocket<rocket::Ignite> {
                 routes::favicon_ico,
                 routes::sitemap_xml,
                 routes::robots_txt,
-
+                routes::ws_join,
+                routes::ws_broadcast,
                 // Theses routes are troll routes, made to fuck with the bots
                 routes::bot_env,
                 routes::bot_admin,

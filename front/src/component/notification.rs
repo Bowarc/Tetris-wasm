@@ -133,7 +133,7 @@ impl yew::Component for NotificationManager {
                 // log!("Added notification");
 
                 ctx.link().send_future(async move {
-                    gloo_timers::future::sleep(Duration::from_secs_f64(notification.timeout_s))
+                    gloo::timers::future::sleep(Duration::from_secs_f64(notification.timeout_s))
                         .await;
                     Message::RemoveAnimation {
                         id: notification.id,
@@ -148,7 +148,7 @@ impl yew::Component for NotificationManager {
                 };
                 notification.expired = true;
                 ctx.link().send_future(async move {
-                    gloo_timers::future::sleep(Duration::from_secs_f64(
+                    gloo::timers::future::sleep(Duration::from_secs_f64(
                         0.1, /* This needs to be 1/10 of the css animation time, otherwise it leave a remnant image of the notification */
                     ))
                     .await;
