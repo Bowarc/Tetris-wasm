@@ -6,6 +6,7 @@ use tokio::sync::Mutex;
 
 pub type UserMap = Arc<Mutex<HashMap<i32, Arc<Mutex<SplitSink<DuplexStream, Message>>>>>>;
 
+
 #[get("/ws/<user_id>")]
 pub async fn ws_join<'a>(
     user_id: i32,
@@ -26,7 +27,7 @@ pub async fn ws_join<'a>(
                     resp
                 }));
             };
-            
+
             user_map_guard.insert(user_id, arc_sender.clone());
             println!("New ws user: {user_id}");
             drop(user_map_guard); // release the guard, no need to keep it around
