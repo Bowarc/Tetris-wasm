@@ -7,28 +7,25 @@ edition = "2021"
 
 [[bin]]
 name = "front"
-path = "src/main.rs"
+path = "src/bin/main.rs"
+
+[[bin]]
+name = "worker"
+path = "src/bin/worker.rs"
 
 [dependencies]
-random = {git = "https://github.com/bowarc/Crates", package = "random"}
-time = {git = "https://github.com/bowarc/Crates", package = "time"}
-math = {git = "https://github.com/bowarc/Crates", package = "math"}
-gloo = {version = "0.11.0", features = ["timers", "net"] }
-gloo-console =  "0.3.0" 
+time = { git = "https://github.com/bowarc/Crates", package = "time" }
+gloo = { version = "0.11.0", features = ["timers", "net"] }
+gloo-console = "0.3.0"
 js-sys = "0.3.68"
 yew = { version = "0.21.0", features = ["csr"] }
 yew-router = "0.18.0"
-wasm-bindgen = { version = "0.2.93"}
-wasm-bindgen-futures = "0.4.41"
-wasm-timer = "0.2.5"
-serde_json = "1.0.111"
 serde = { version = "1.0.194", features = ["derive"] }
-futures = "0.3.30"
+futures = "0.3.31"
 i18nrs = { version = "0.1.5", features = ["yew"] }
-shared = {path = "../shared"}
+shared = { path = "../shared" }
+yew-agent = "0.3.0"
 
 [dependencies.web-sys]
 version = "0.3.68"
-features = [
-  "MediaQueryList"
-]
+features = ["MediaQueryList"]

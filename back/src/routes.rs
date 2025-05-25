@@ -41,6 +41,20 @@ pub async fn front_bg_wasm(ip_addr: rocket_client_addr::ClientAddr) -> super::re
     static_file_response("/front_bg.wasm", ContentType::WASM, ip_addr, true).await
 }
 
+#[rocket::get("/worker.js")]
+pub async fn worker_js(ip_addr: rocket_client_addr::ClientAddr) -> super::response::Response {
+    use rocket::http::ContentType;
+
+    static_file_response("/worker.js", ContentType::JavaScript, ip_addr, true).await
+}
+
+#[rocket::get("/worker_bg.wasm")]
+pub async fn worker_bg_wasm(ip_addr: rocket_client_addr::ClientAddr) -> super::response::Response {
+    use rocket::http::ContentType;
+
+    static_file_response("/worker_bg.wasm", ContentType::WASM, ip_addr, true).await
+}
+
 #[rocket::get("/index.html")]
 pub async fn index_html(ip_addr: rocket_client_addr::ClientAddr) -> super::response::Response {
     use rocket::http::ContentType;

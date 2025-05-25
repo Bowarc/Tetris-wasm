@@ -6,7 +6,6 @@ use tokio::sync::Mutex;
 
 pub type UserMap = Arc<Mutex<HashMap<i32, Arc<Mutex<SplitSink<DuplexStream, Message>>>>>>;
 
-
 #[get("/ws/<user_id>")]
 pub async fn ws_join<'a>(
     user_id: i32,
@@ -28,7 +27,9 @@ pub async fn ws_join<'a>(
                 }));
             };
 
-            user_map_guard.insert(user_id, arc_sender.clone());
+            if let Some(_old) = user_map_guard.insert(user_id, arc_sender.clone()) {
+                debug!("Replacing old websocket at id: {user_id}");
+            };
             println!("New ws user: {user_id}");
             drop(user_map_guard); // release the guard, no need to keep it around
 
@@ -42,9 +43,9 @@ pub async fn ws_join<'a>(
                         user_map.lock().await.remove(&user_id).unwrap();
                         // Here the following receiever.next will give a None so the loop will stop
                     }
-                    Ok(m) => { // any other message 
+                    Ok(m) => {
+                        // any other message
                         println!("Unhandled message: {m}");
-
                     }
                     Err(_) => {
                         print!("Failed to read user {user_id}'s receiver");
@@ -65,7 +66,7 @@ pub async fn ws_broadcast(content: &str, user_map: &State<UserMap>) -> crate::re
     let map_lock = user_map.lock().await;
 
     // Simple example on how to send a message to every saved websockets
-    for (_user_id, ws)  in map_lock.iter() {
+    for (_user_id, ws) in map_lock.iter() {
         let mut sink = ws.lock().await;
 
         sink.send(Message::Text(format!("Broadcast: {}", content)))

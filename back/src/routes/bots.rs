@@ -1,7 +1,7 @@
 //
 //   I thought about fairing with hashset of bot ips,
 //   but it would just be more work, more wasted CPU cycles
-// 
+//
 //   Not worth
 //
 
@@ -19,13 +19,12 @@ async fn bot_main(
     Response::builder()
         .with_content("Get the fuck out")
         .with_content_type(ContentType::Text)
-        .with_status(Status::ImATeapot).build()
+        .with_status(Status::ImATeapot)
+        .build()
 }
 
 #[rocket::get("/.env")]
-pub async fn bot_env(
-    ip: rocket_client_addr::ClientAddr,
-) -> crate::response::Response {
+pub async fn bot_env(ip: rocket_client_addr::ClientAddr) -> crate::response::Response {
     use std::path::PathBuf;
     bot_main(PathBuf::from("/.env"), ip).await
 }
@@ -65,5 +64,3 @@ pub async fn bot_wp_admin(
     use std::path::PathBuf;
     bot_main(PathBuf::from("/wp-admin").join(p), ip).await
 }
-
-

@@ -43,6 +43,8 @@ pub async fn build_rocket() -> rocket::Rocket<rocket::Ignite> {
                 routes::_404,
                 routes::front_js,
                 routes::front_bg_wasm,
+                routes::worker_js,
+                routes::worker_bg_wasm,
                 routes::index_html,
                 routes::static_css,
                 routes::static_resource,

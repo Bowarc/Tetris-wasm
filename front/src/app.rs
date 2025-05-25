@@ -1,5 +1,6 @@
-use crate::component::{LocaleSwitch, LightSwitch};
+use crate::component::{LightSwitch, LocaleSwitch, WsReactor};
 use yew::{function_component, use_state, Callback, Html};
+use yew_agent::reactor::ReactorProvider;
 
 #[derive(Debug, PartialEq, yew::Properties)]
 pub struct Props {
@@ -62,7 +63,9 @@ pub fn App(props: &Props) -> Html {
             }</div>
         </div>
         <div id="content">
-            {current_scene.html(current_scene.clone())}
+            <ReactorProvider<WsReactor> path = "/worker.js">
+                {current_scene.html(current_scene.clone())}
+            </ReactorProvider<WsReactor>>
             <NotificationManager />
         </div>
         <footer>

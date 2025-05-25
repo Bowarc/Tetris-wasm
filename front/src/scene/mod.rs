@@ -8,7 +8,7 @@ pub use home::Home;
 #[derive(Clone, Copy, PartialEq, Debug)]
 pub enum Scene {
     Home,
-    NotFound
+    NotFound,
 }
 
 impl Scene {

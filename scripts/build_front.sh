@@ -21,6 +21,7 @@ fi
 
 echo Bindgen
 wasm-bindgen --target=web --out-dir=./target/wasm-bindgen/$mode ./target/wasm32-unknown-unknown/$mode/front.wasm --no-typescript
+wasm-bindgen --target=no-modules --out-dir=./target/wasm-bindgen/$mode ./target/wasm32-unknown-unknown/$mode/worker.wasm --no-typescript
 
 if ! [ -d "./static/" ]; then
   echo Creating ouput directory

@@ -4,16 +4,13 @@ pub enum ClientMessage {
     GameOver,
 }
 
-pub enum ServerMessage{
-    Broadcast{
-        user_id: i32,
-        msg: ClientMessage
-    },
-    LeaderBoardUpdate()
+pub enum ServerMessage {
+    Broadcast { user_id: i32, msg: ClientMessage },
+    LeaderBoardUpdate(),
 }
 
-type BoardRow= [i32; 8];
+type BoardRow = [i32; 8];
 
 pub struct Board {
-    rows: [BoardRow; 16]
+    rows: [BoardRow; 16],
 }

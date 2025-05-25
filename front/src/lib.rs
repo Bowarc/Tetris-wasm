@@ -3,7 +3,7 @@
 extern crate gloo_console;
 
 mod app;
-mod component;
+pub mod component;
 mod scene;
 
 #[derive(Debug, Clone, Copy, PartialEq, yew_router::Routable)]
@@ -18,7 +18,7 @@ pub enum Route {
 }
 
 #[yew::function_component]
-fn Router() -> yew::Html {
+pub fn Router() -> yew::Html {
     use {
         scene::Scene,
         yew::html,
@@ -44,8 +44,4 @@ fn Router() -> yew::Html {
             }} />
         </BrowserRouter>
     }
-}
-
-fn main() {
-    yew::Renderer::<Router>::new().render();
 }
