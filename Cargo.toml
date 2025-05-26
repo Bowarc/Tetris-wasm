@@ -2,7 +2,7 @@
 resolver = "2"
 members = [
 	"back",
-	"front", "shared",
+	"front", "shared", "tetris",
 ]
 
 [profile.dev.package."*"]

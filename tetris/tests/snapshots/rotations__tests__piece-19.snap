@@ -1,0 +1,5 @@
+---
+source: tetris/tests/rotations.rs
+expression: draw_piece(&piece)
+---
+"\"(-1, -1), (0, 0), (-1, 0), (0, 1), \"\n\n+-------+\n|       |\n|  #    |\n|  ##   |\n|   #   |\n|       |\n+-------+\n"

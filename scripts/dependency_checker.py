@@ -27,10 +27,10 @@ from typing import List, Tuple
 ############
 GLOBAL_DEP_THRESHOLD: int = 2  # How many times a global dependency has to be used
 
-RED = "\033[0;31m"
-GREEN = "\033[0;32m"
-YELLOW = "\033[0;33m"
-RESET = "\033[0m"
+RED: str = "\033[0;31m"
+GREEN: str = "\033[0;32m"
+YELLOW: str = "\033[0;33m"
+RESET: str = "\033[0m"
 
 
 class Dependencies:

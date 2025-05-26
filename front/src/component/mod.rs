@@ -7,3 +7,5 @@ mod notification;
 pub use notification::{push_notification, Notification, NotificationManager};
 mod ws_reactor;
 pub use ws_reactor::{ReactorControlSignal, WsReactor};
+mod board;
+pub use board::Board;

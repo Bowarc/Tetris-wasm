@@ -23,9 +23,17 @@ yew-router = "0.18.0"
 serde = { version = "1.0.194", features = ["derive"] }
 futures = "0.3.31"
 i18nrs = { version = "0.1.5", features = ["yew"] }
-shared = { path = "../shared" }
 yew-agent = "0.3.0"
+shared = { path = "../shared" }
+tetris = { path = "../tetris" }
 
 [dependencies.web-sys]
 version = "0.3.68"
-features = ["MediaQueryList"]
+features = [
+  # Light switch
+  "MediaQueryList",
+  # Canvas rendering
+  "HtmlCanvasElement",
+  "CanvasRenderingContext2d",
+  "TextMetrics",
+]

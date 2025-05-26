@@ -1,7 +1,9 @@
 [package]
-name = "shared"
+name = "tetris"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-tetris = { path = "../tetris" }
+
+[dev-dependencies]
+insta = "1.42.1"
