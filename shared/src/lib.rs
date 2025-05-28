@@ -1,9 +1,8 @@
 pub enum ClientMessage {
-    LineDestroyed {
+    LinesDestroyed (
         // u16 since it's boolean anyway, we can use an int as an array of bits, don't need sign nor more than 16 wide
-        line_shapes: Vec<u16>,
-        board: tetris::Board,
-    },
+        Vec<u16>
+    ),
     BoardUpdate(tetris::Board),
     GameOver,
 }
