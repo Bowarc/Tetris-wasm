@@ -29,11 +29,17 @@ pub async fn WsReactor(mut scope: ReactorScope<ReactorControlSignal, String>) {
 
     debug!("Starting ws");
 
-    let mut ws = WebSocket::open("/ws/1").unwrap();
+    let mut ws = match WebSocket::open("ws://127.0.0.1:42071/ws/1") {
+        Ok(ws) => ws,
+        Err(e) => {
+            error!(format!("Cannot open websocket due to: {e}"));
+            return;
+        }
+    };
 
     'inner: loop {
         futures::select! {
-            cs = scope.next() => match cs{
+            rcs = scope.next() => match rcs{
                 Some(ReactorControlSignal::Start) => {
                     debug!("Ws already started")
                 }
