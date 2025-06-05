@@ -1,0 +1,12 @@
+TODO:
+- [X] Join: recevoir un User ID (/ws)
+- [ ] [SKIPPED] Join: informer l'utilisateur de son User ID.
+- [ ] BoardUpdate: broadcast
+- [ ] LineDestroyed: broadcast board + envoyer les lignes malus a une victime random
+- [ ] GameOver: broadcast gameover + send leaderboard position
+- [ ] Keep leaderboard total size + current size
+- [ ] Deal with user leaving page (no update in 30sec) = dead
+- [ ] Follow-up: Producer consumer? Then we can't fully verify moves (task from same client/player needs to be tackled by same consumer, or order needs to be introduced -> sucks).
+- [ ] Follow-up: create rooms! Multiple game rooms at the same time
+    - [ ] Send new messages to tell how many people were found/are currently waiting
+- [ ] Follow-up (no, please): verify game board updates are good

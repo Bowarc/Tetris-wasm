@@ -1,6 +1,8 @@
+use serde::{Serialize, Deserialize};
+
 pub type BoardRow = [Option<crate::PieceId>; 10];
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Default, Copy, Clone, PartialEq)]
 pub struct Board([BoardRow; 20]);
 
 impl Board {
