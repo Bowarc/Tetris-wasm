@@ -9,3 +9,5 @@ mod ws_reactor;
 pub use ws_reactor::{ReactorControlSignal, WsReactor};
 mod board;
 pub use board::Board;
+mod game;
+pub use game::Game;

@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Color(u8, u8, u8, u8);
 
 impl Color {

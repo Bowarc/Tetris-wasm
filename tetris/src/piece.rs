@@ -22,6 +22,17 @@ impl PieceId {
             Self::J => Color::from((0, 0, 255)),
         }
     }
+    pub fn random() -> Self {
+        *random::pick(&[
+            Self::I,
+            Self::O,
+            Self::T,
+            Self::S,
+            Self::Z,
+            Self::L,
+            Self::J,
+        ])
+    }
 }
 
 #[derive(Debug, Copy, Clone, PartialEq)]
@@ -44,7 +55,7 @@ impl std::ops::Add<&crate::Position> for &Bit {
     }
 }
 
-#[derive(Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Piece {
     id: PieceId,
     bits: Vec<Bit>,
@@ -117,4 +128,3 @@ impl From<PieceId> for Piece {
         }
     }
 }
-

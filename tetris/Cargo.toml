@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+random = { git = "https://github.com/bowarc/crates", package = "random"}
 
 [dev-dependencies]
 insta = "1.42.1"
