@@ -21,7 +21,7 @@ js-sys = "0.3.68"
 yew = { version = "0.21.0", features = ["csr"] }
 yew-router = "0.18.0"
 serde = { version = "1.0.194", features = ["derive"] }
-futures = "0.3.31"
+futures.workspace=true
 i18nrs = { version = "0.1.5", features = ["yew"] }
 yew-agent = "0.3.0"
 shared = { path = "../shared" }
