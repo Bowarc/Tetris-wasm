@@ -13,8 +13,11 @@ pub fn Home(_props: &Props) -> Html {
     } else {
         error!("Failed to retrieve the navigator")
     }
+    // let reactor_sub = yew_agent::reactor::use_reactor_subscription::<crate::component::WsReactor>();
+    // reactor_sub.send(crate::component::ReactorControlSignal::Start);
 
     html! { <>
+        <Game />
         <Game />
         // <button onclick={start}>{ "Start ws" }</button>
     </>}

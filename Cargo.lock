@@ -119,6 +119,7 @@ dependencies = [
  "rocket",
  "rocket-client-addr",
  "rocket_ws",
+ "serde_json",
  "shared",
  "tokio",
  "tokio-tungstenite 0.26.2",
@@ -470,6 +471,7 @@ dependencies = [
  "i18nrs",
  "js-sys",
  "serde",
+ "serde_json",
  "shared",
  "tetris",
  "time 0.1.0",
@@ -2200,6 +2202,7 @@ dependencies = [
 name = "shared"
 version = "0.1.0"
 dependencies = [
+ "serde",
  "tetris",
 ]
 
@@ -2331,6 +2334,7 @@ version = "0.1.0"
 dependencies = [
  "insta",
  "random",
+ "serde",
 ]
 
 [[package]]

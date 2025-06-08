@@ -1,9 +1,25 @@
 pub type BoardRow = [Option<crate::PieceId>; 10];
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub struct Board([BoardRow; 20]);
 
 impl Board {
+    pub fn get_at(&self, position: &crate::Position) -> Option<&Option<crate::PieceId>> {
+        let x_index = position.x().checked_sub(1)?;
+        let y_index = position.y().checked_sub(1)?;
+
+        self.0
+            .get(y_index as usize)
+            .and_then(|row| row.get(x_index as usize))
+    }
+    pub fn get_mut_at(&mut self, position: &crate::Position) -> Option<&mut Option<crate::PieceId>> {
+        let x_index = position.x().checked_sub(1)?;
+        let y_index = position.y().checked_sub(1)?;
+
+        self.0
+            .get_mut(y_index as usize)
+            .and_then(|row| row.get_mut(x_index as usize))
+    }
     pub fn place_at(
         &mut self,
         piece: &crate::Piece,

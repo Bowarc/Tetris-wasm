@@ -1,9 +1,9 @@
 #[path = "routes/bots.rs"]
 mod bot_routes;
 pub use bot_routes::{bot_admin, bot_env, bot_wordpress, bot_wp, bot_wp_admin};
-#[path = "routes/websocket_poc.rs"]
-mod ws_poc;
-pub use ws_poc::{ws_broadcast, ws_join, UserMap};
+#[path = "routes/websocket.rs"]
+mod ws;
+pub use ws::{ws_broadcast, ws_join, UserMap};
 
 // Here are routes that are managed by the front end router, so just serve the page and let it do it's things
 macro_rules! front_route {

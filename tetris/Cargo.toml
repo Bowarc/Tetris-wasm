@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 random = { git = "https://github.com/bowarc/crates", package = "random"}
+serde = { version = "1.0.219", features = ["derive"] }
 
 [dev-dependencies]
 insta = "1.42.1"
